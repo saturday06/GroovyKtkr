@@ -1,0 +1,37 @@
+apply plugin: 'com.android.application'
+apply plugin: 'groovyx.grooid.groovy-android'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        applicationId "jp.leafytree.groovyktkr"
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    packagingOptions {
+        exclude 'LICENSE.txt'
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile 'org.codehaus.groovy:groovy:2.4.3:grooid'
+    androidTestCompile 'com.jayway.android.robotium:robotium-solo:5.4.1'
+}
+
+project.androidGroovy {
+    options {
+        sourceCompatibility = '1.7'
+        targetCompatibility = '1.7'
+    }
+}
